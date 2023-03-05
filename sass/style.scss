@@ -1,5 +1,61 @@
-@import "variables.scss";
+@import "_variables.scss";
 
 body {
-    background-color: black;
+    background-color: $dark;
+}
+
+h1, p {
+    color: $white;
+}
+
+button {
+    cursor: pointer;
+}
+
+// START PAGE
+// --------------------------------------------------------
+.start__header {
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25%;
+}
+
+// GAME PAGE
+// --------------------------------------------------------
+
+// header
+.game__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5rem;
+    &-player {
+        content: '';
+        width: 50px;
+        height: 50px;
+    }
+}
+
+#player1 {
+    background-color: $primary;
+}
+#player2 {
+    background-color: $secondary;
+}
+
+// content
+.game__content {
+    text-align: center;
+    &-box {
+        content: '';
+        border: 2px solid $white;
+        width: 60vh;
+        height: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &-button {
+        margin: 3rem;
+    }
 }
