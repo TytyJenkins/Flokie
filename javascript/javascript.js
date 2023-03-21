@@ -5,6 +5,7 @@ let btnStop = document.getElementById('btnStop');
 let gameBox = document.getElementById('gameBox');
 
 
+
 // functions
 // -----------------------------
 let getRandowCoord = (min, max) => {
@@ -22,24 +23,32 @@ let getPointCoord = () => {
     return boxContent;
 }
 
-let clearAllPoint = () => {
-    let spawnedPoint = document.getElementsByClassName('point');
-    spawnedPoint.remove();
+let removePoint = (e) => {
+    let spawnedPoint = document.querySelectorAll('.point');
+    let arrayPoint = Array.from(spawnedPoint);
+    
+    arrayPoint.forEach(
+        function (index){
+            console.log(index)
+            if (index.id == e) {
+                index.remove()
+            }
+        }
+     );
 }
 
 let pointSpawn = () => {
     let spawn = setInterval(function(){
-        let boxSize = gameBox.getBoundingClientRect();
+        
         let box = getPointCoord();
-        gameBox.innerHTML += '<div id="' + box[1] + box[0] + '" class="point" style="top:' + box[1] +'px; left:' + box[0] +'px;"></div>';
+        gameBox.innerHTML += '<button onclick="removePoint(' + box[1] + box[0] + ')" id="' + box[1] + box[0] + '" class="point" style="top:' + box[1] +'px; left:' + box[0] +'px;" type="button"></button>';
+
       },1000);
     setTimeout (function() { clearInterval(spawn);}, 3000);
+    
 }
 
 // events
 // -----------------------------
 btnPlay.addEventListener('click', pointSpawn);
-btnStop.addEventListener('click', clearAllPoint);
-
-
 
